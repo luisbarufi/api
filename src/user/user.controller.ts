@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
   Put,
@@ -25,45 +26,45 @@ export class UserController {
   }
 
   @Get(':id')
-  async show(@Param() params) {
+  async show(@Param('id', ParseIntPipe) id) {
     return {
       user: {},
-      params,
+      id,
     };
   }
 
   @Put(':id')
   async updated(
     @Body() { email, name, password }: UpdatedPutUserDTO,
-    @Param() params,
+    @Param('id', ParseIntPipe) id,
   ) {
     return {
       method: 'Put',
       email,
       name,
       password,
-      params,
+      id,
     };
   }
 
   @Patch(':id')
   async updatedPartial(
     @Body() { email, name, password }: UpdatedPatchUserDTO,
-    @Param() params,
+    @Param('id', ParseIntPipe) id,
   ) {
     return {
       method: 'Patch',
       email,
       name,
       password,
-      params,
+      id,
     };
   }
 
   @Delete(':id')
-  async delete(@Param() params) {
+  async delete(@Param('id', ParseIntPipe) id) {
     return {
-      params,
+      id,
     };
   }
 }
