@@ -19,7 +19,7 @@ export class UserService {
   ) {}
 
   async create(data: CreateUserDTO) {
-    if (this.usersRepository.exists({ where: { email: data.email } })) {
+    if (await this.usersRepository.exists({ where: { email: data.email } })) {
       throw new BadRequestException('Email already exists');
     }
 
