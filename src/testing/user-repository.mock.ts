@@ -5,11 +5,11 @@ import { UserEntityList } from './user-entity-list.mock';
 export const usersRepositoryMock = {
   provide: getRepositoryToken(UserEntity),
   useValue: {
-    exists: jest.fn(),
+    exists: jest.fn().mockResolvedValue(true),
     create: jest.fn(),
     save: jest.fn().mockResolvedValue(UserEntityList[0]),
-    find: jest.fn(),
-    findOneBy: jest.fn(),
+    find: jest.fn().mockResolvedValue(UserEntityList),
+    findOneBy: jest.fn().mockResolvedValue(UserEntityList[0]),
     update: jest.fn(),
     delete: jest.fn(),
   },
