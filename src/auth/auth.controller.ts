@@ -22,7 +22,6 @@ import {
   FileInterceptor,
   FilesInterceptor,
 } from '@nestjs/platform-express';
-import { join } from 'path';
 import { User } from '../decorators/user.decorator';
 import { FileService } from '../file/file.service';
 import { AuthGuard } from '../guards/auth.guard';
@@ -75,17 +74,10 @@ export class AuthController {
     )
     photo: Express.Multer.File,
   ) {
-    const path = join(
-      __dirname,
-      '..',
-      '..',
-      'storage',
-      'photos',
-      `photo-${user.id}.jpg`,
-    );
+    const filename = `photo-${user.id}.jpg`;
 
     try {
-      this.fileService.upload(photo, path);
+      this.fileService.upload(photo, filename);
     } catch (e) {
       return new BadRequestException(e);
     }
