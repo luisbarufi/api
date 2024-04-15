@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 import { userServiceMock } from '../testing/user-service.mock';
 import { createUserDTO } from '../testing/create-user-dto.mock';
 import { UserEntityList } from '../testing/user-entity-list.mock';
-import { updatedPutUserDTO } from '../testing/create-put-user-dto.mock';
+import { updatePutUserDTO } from '../testing/create-put-user-dto.mock';
 
 describe('UserController', () => {
   let userController: UserController;
@@ -67,13 +67,13 @@ describe('UserController', () => {
 
   describe('Update', () => {
     test('update method', async () => {
-      const result = await userController.updated(updatedPutUserDTO, 1);
+      const result = await userController.update(updatePutUserDTO, 1);
 
       expect(result).toEqual(UserEntityList[0]);
     });
 
     test('updatePartial method', async () => {
-      const result = await userController.updatedPartial(updatedPutUserDTO, 1);
+      const result = await userController.updatePartial(updatePutUserDTO, 1);
 
       expect(result).toEqual(UserEntityList[0]);
     });

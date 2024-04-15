@@ -1,6 +1,6 @@
 import { Role } from '../enums/role.enum';
-import { UpdatedPatchUserDTO } from '../user/dto/update-patch-user.dto';
+import { UpdatePatchUserDTO } from '../user/dto/update-patch-user.dto';
 
-export const updatedPatchUserDTO: UpdatedPatchUserDTO = {
+export const updatePatchUserDTO: UpdatePatchUserDTO = {
   role: Role.Admin,
 };

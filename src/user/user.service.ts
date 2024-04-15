@@ -4,8 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { CreateUserDTO } from './dto/create-user.dto';
-import { UpdatedPutUserDTO } from './dto/update-put-user.dto';
-import { UpdatedPatchUserDTO } from './dto/update-patch-user.dto';
+import { UpdatePutUserDTO } from './dto/update-put-user.dto';
+import { UpdatePatchUserDTO } from './dto/update-patch-user.dto';
 import * as bcrypt from 'bcrypt';
 import { UserEntity } from './entity/user.entity';
 import { Repository } from 'typeorm';
@@ -42,7 +42,7 @@ export class UserService {
 
   async update(
     id: number,
-    { email, name, password, birthAt, role }: UpdatedPutUserDTO,
+    { email, name, password, birthAt, role }: UpdatePutUserDTO,
   ) {
     await this.userExists(id);
 
@@ -61,7 +61,7 @@ export class UserService {
 
   async updatePartial(
     id: number,
-    { email, name, password, birthAt, role }: UpdatedPatchUserDTO,
+    { email, name, password, birthAt, role }: UpdatePatchUserDTO,
   ) {
     await this.userExists(id);
 

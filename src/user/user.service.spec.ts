@@ -6,8 +6,8 @@ import { createUserDTO } from '../testing/create-user-dto.mock';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entity/user.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { updatedPutUserDTO } from '../testing/create-put-user-dto.mock';
-import { updatedPatchUserDTO } from '../testing/create-patch-user-dto.mock';
+import { updatePatchUserDTO } from '../testing/create-patch-user-dto.mock';
+import { updatePutUserDTO } from '../testing/create-put-user-dto.mock';
 
 describe('UserService', () => {
   let userService: UserService;
@@ -53,13 +53,13 @@ describe('UserService', () => {
 
   describe('Update', () => {
     test('method update', async () => {
-      const result = await userService.update(1, updatedPutUserDTO);
+      const result = await userService.update(1, updatePutUserDTO);
 
       expect(result).toEqual(UserEntityList[0]);
     });
 
     test('method updatePartial', async () => {
-      const result = await userService.updatePartial(1, updatedPatchUserDTO);
+      const result = await userService.updatePartial(1, updatePatchUserDTO);
 
       expect(result).toEqual(UserEntityList[0]);
     });
