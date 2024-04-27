@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { usersRepositoryMock } from '../testing/user-repository.mock';
-import { UserEntityList } from '../testing/user-entity-list.mock';
+import { userEntityList } from '../testing/user-entity-list.mock';
 import { createUserDTO } from '../testing/create-user-dto.mock';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entity/user.entity';
@@ -33,7 +33,7 @@ describe('UserService', () => {
 
       const result = await userService.create(createUserDTO);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
   });
 
@@ -41,13 +41,13 @@ describe('UserService', () => {
     test('method list', async () => {
       const result = await userService.list();
 
-      expect(result).toEqual(UserEntityList);
+      expect(result).toEqual(userEntityList);
     });
 
     test('method show', async () => {
       const result = await userService.show(1);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
   });
 
@@ -55,13 +55,13 @@ describe('UserService', () => {
     test('method update', async () => {
       const result = await userService.update(1, updatePutUserDTO);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
 
     test('method updatePartial', async () => {
       const result = await userService.updatePartial(1, updatePatchUserDTO);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
   });
 

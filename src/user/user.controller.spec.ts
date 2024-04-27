@@ -6,7 +6,7 @@ import { RoleGuard } from '../guards/role.gurad';
 import { UserService } from './user.service';
 import { userServiceMock } from '../testing/user-service.mock';
 import { createUserDTO } from '../testing/create-user-dto.mock';
-import { UserEntityList } from '../testing/user-entity-list.mock';
+import { userEntityList } from '../testing/user-entity-list.mock';
 import { updatePutUserDTO } from '../testing/create-put-user-dto.mock';
 
 describe('UserController', () => {
@@ -47,7 +47,7 @@ describe('UserController', () => {
     test('create method', async () => {
       const result = await userController.create(createUserDTO);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
   });
 
@@ -55,13 +55,13 @@ describe('UserController', () => {
     test('list create', async () => {
       const result = await userController.list();
 
-      expect(result).toEqual(UserEntityList);
+      expect(result).toEqual(userEntityList);
     });
 
     test('show create', async () => {
       const result = await userController.show(1);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
   });
 
@@ -69,13 +69,13 @@ describe('UserController', () => {
     test('update method', async () => {
       const result = await userController.update(updatePutUserDTO, 1);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
 
     test('updatePartial method', async () => {
       const result = await userController.updatePartial(updatePutUserDTO, 1);
 
-      expect(result).toEqual(UserEntityList[0]);
+      expect(result).toEqual(userEntityList[0]);
     });
   });
 
